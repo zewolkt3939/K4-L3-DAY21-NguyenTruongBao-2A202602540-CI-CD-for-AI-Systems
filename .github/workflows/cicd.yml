@@ -37,6 +37,7 @@ jobs:
 
   train:
     name: Train
+    environment: S3lab
     needs: unit-test
     runs-on: ubuntu-latest
     outputs:
@@ -97,6 +98,7 @@ jobs:
 
   release:
     name: Release
+    environment: S3lab
     needs: quality-gate
     runs-on: ubuntu-latest
     steps:
