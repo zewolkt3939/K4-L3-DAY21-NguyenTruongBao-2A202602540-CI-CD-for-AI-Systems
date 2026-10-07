@@ -14,9 +14,9 @@
 
 ## Hồ sơ cần hoàn thiện
 
-- Thiếu ảnh 02-actions-buoc-2, 03-actions-buoc-3, 04-curl-api và 05-cloud-storage.
-- Browser Use kết nối được Brave, nhưng quyền đọc github.com và ap-southeast-1.console.aws.amazon.com đã bị từ chối. Chỉ tiếp tục chụp sau khi người dùng bỏ chặn và xác nhận.
-- Ảnh trình duyệt phải kèm URL theo quy định. Ảnh API phải thấy hai lệnh curl, IP VM và kết quả. Ảnh S3 cần thấy dữ liệu dvc/ và artifacts/current/model.joblib; có thể tách 05a/05b theo hướng dẫn.
-- Ảnh 01 gửi trong chat trước đây có đủ metrics/params nhưng sort Created; hướng dẫn chi tiết yêu cầu F1 giảm dần, nên cần kiểm tra/chụp lại.
+- Đã kiểm tra ảnh 02, 03, 04 đạt yêu cầu. Hai ảnh 05a/05b hiển thị object dữ liệu DVC có hash khớp con trỏ và artifacts/current/model.joblib, có URL và tên bucket. Tất cả ảnh dưới 1 MB.
+- Ảnh 01 có đủ metrics/params nhưng sort Created; cần chụp lại với F1 giảm dần.
+- Công cụ Computer Use hiện lỗi: `Computer Use native pipe is unavailable` (os error 2), nên chưa thể tự chụp lại MLflow hoặc thao tác nộp bài trên vlearn.dev.
+- Đã xuất nop-bai/bao-cao.pdf từ bao-cao.md; kiểm tra đúng một trang A4 và xem ảnh render để xác nhận bố cục.
 - Chưa nộp vlearn.dev hoặc xác minh mở repo ẩn danh. Không đánh dấu đã nộp.
 - Bonus không nằm trong phạm vi hoàn thiện tiêu chí chính.

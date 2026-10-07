@@ -25,8 +25,8 @@ nop-bai/
 - [x] Repo GitHub ở chế độ **public** và chứa toàn bộ code, cấu hình đã hoàn thiện.
 - [ ] Đủ 5 ảnh trong `anh-chup-man-hinh/`, đúng tên file, đúng thứ tự (xem
       [yêu cầu chi tiết](anh-chup-man-hinh/README.md)).
-- [ ] `bao-cao.md` đã điền đủ 3 mục bắt buộc và không vượt quá 1 trang A4.
-- [ ] Đã `git push` toàn bộ thư mục `nop-bai/` lên GitHub.
+- [x] `bao-cao.md` đã điền đủ nội dung bắt buộc; bản `bao-cao.pdf` đã kiểm tra đúng 1 trang A4.
+- [x] Đã `git push` hồ sơ hiện có trong `nop-bai/` lên GitHub; cần push lại nếu thay ảnh 01.
 - [ ] Dán URL repo GitHub vào bài nộp trên **https://vlearn.dev**.
 - [ ] Mở lại URL vừa nộp ở chế độ ẩn danh để chắc chắn repo public và người chấm xem được.
 
@@ -38,7 +38,9 @@ nop-bai/
 
 Bước 2 và Bước 3 đều đã có đủ bốn jobs xanh; quality gate đã chặn model F1=0 và bỏ qua Release. Reports thật và link runs nằm trong [ket-qua/](ket-qua/README.md). API public đã trả healthz=ok và nhãn dự đoán hợp lệ. Báo cáo đã điền metrics thật.
 
-Chưa đủ ảnh: hiện chỉ có 01-mlflow-ui.png. Cần chụp 02, 03, 04 và 05 theo hướng dẫn. Không dùng JSON thay thế ảnh rubric; chưa đánh dấu hoàn tất hồ sơ hoặc đã nộp vlearn.dev. Bản Markdown báo cáo đã rút gọn, cần kiểm tra bố cục khi in để đáp ứng một trang A4.
+Đã có ảnh 01–04 và hai ảnh S3 `05a-storage-dvc.png`, `05b-storage-model.png` đúng yêu cầu dữ liệu/model, có thanh địa chỉ. Các ảnh đều dưới 1 MB. Ảnh 01 đủ metrics/params nhưng vẫn sort Created; cần chụp lại với `f1_score` giảm dần trước khi đánh dấu hoàn tất ảnh. `05-cloud-storage.png` là ảnh tổng quan bổ sung.
+
+Bản [báo cáo PDF](bao-cao.pdf) được xuất từ Markdown và đã kiểm tra trực quan đúng một trang A4. Chưa xác minh nộp vlearn.dev hoặc truy cập repo bằng cửa sổ ẩn danh, nên giữ hai mục này chưa hoàn tất.
 
 | Ảnh | Chứng minh hạng mục nào trong rubric | Điểm |
 |---|---|---|
