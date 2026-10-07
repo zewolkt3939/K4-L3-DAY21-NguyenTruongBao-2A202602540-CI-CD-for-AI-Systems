@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from pathlib import Path
 
 TRAIN_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
 TEST_URL  = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test"
@@ -22,8 +23,9 @@ CATEGORICAL_COLUMNS = ["workclass", "marital_status", "occupation", "relationshi
 
 
 def load(url: str, skiprows: int) -> pd.DataFrame:
+    cached = Path("outputs/raw") / url.rsplit("/", 1)[-1]
     return pd.read_csv(
-        url,
+        cached if cached.exists() else url,
         header=None,
         names=RAW_COLUMNS,
         skiprows=skiprows,

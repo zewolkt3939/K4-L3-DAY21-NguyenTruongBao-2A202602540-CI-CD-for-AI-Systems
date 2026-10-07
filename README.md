@@ -4,6 +4,17 @@ Course: AIInAction - VinUni
 Buổi: Day 21 - CI/CD cho AI Systems
 Khoá: K4
 
+## Bản triển khai trong repo này
+
+Code huấn luyện, API và workflow đã được điền. Cloud mặc định là **AWS (S3 + EC2)**.
+Xem [hướng dẫn thực hiện trên AWS](docs/huong-dan-aws.md) cho các lệnh PowerShell,
+IAM policies, GitHub Secrets và script cấu hình VM. Các phần bên dưới giữ lại
+hướng dẫn gốc của lab (ví dụ GCP).
+
+`requirements.txt` chứa dependencies chung; cài `requirements-aws.txt` để thêm DVC/S3.
+Chạy `python -m src.experiments` để ghi ít nhất ba thí nghiệm và chọn tham số tốt nhất.
+Workflow chỉ upload model lên `artifacts/current/` sau khi F1 qua quality gate.
+
 ---
 
 ## Mục Tiêu Học Tập

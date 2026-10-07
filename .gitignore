@@ -11,3 +11,12 @@ sa-key.json
 __pycache__/
 *.pyc
 .DS_Store
+.pytest_cache/
+mlruns/
+.dvc/cache/
+.dvc/tmp/
+.dvc/config.local
+*.pem
+*.key
+credentials*.json
+.pip-probe/
