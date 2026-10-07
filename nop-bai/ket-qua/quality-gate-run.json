@@ -1,0 +1,30 @@
+{
+  "run_id": 37634935302,
+  "url": "https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37634935302",
+  "jobs": [
+    {
+      "name": "Unit Test",
+      "conclusion": "success",
+      "head_sha": "e37bd7073b0eda04871ad7f88c9bdda41d975e37",
+      "html_url": "https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37634935302/job/112838542622"
+    },
+    {
+      "name": "Train",
+      "conclusion": "success",
+      "head_sha": "e37bd7073b0eda04871ad7f88c9bdda41d975e37",
+      "html_url": "https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37634935302/job/112838976171"
+    },
+    {
+      "name": "Quality Gate",
+      "conclusion": "failure",
+      "head_sha": "e37bd7073b0eda04871ad7f88c9bdda41d975e37",
+      "html_url": "https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37634935302/job/112839604496"
+    },
+    {
+      "name": "Release",
+      "conclusion": "skipped",
+      "head_sha": "e37bd7073b0eda04871ad7f88c9bdda41d975e37",
+      "html_url": "https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37634935302/job/112839663802"
+    }
+  ]
+}

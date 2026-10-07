@@ -22,7 +22,7 @@ nop-bai/
 
 Đánh dấu `[x]` khi hoàn thành từng mục:
 
-- [ ] Repo GitHub ở chế độ **public** và chứa toàn bộ code, cấu hình đã hoàn thiện.
+- [x] Repo GitHub ở chế độ **public** và chứa toàn bộ code, cấu hình đã hoàn thiện.
 - [ ] Đủ 5 ảnh trong `anh-chup-man-hinh/`, đúng tên file, đúng thứ tự (xem
       [yêu cầu chi tiết](anh-chup-man-hinh/README.md)).
 - [ ] `bao-cao.md` đã điền đủ 3 mục bắt buộc và không vượt quá 1 trang A4.
@@ -33,6 +33,12 @@ nop-bai/
 ---
 
 ## Ảnh Chụp Màn Hình Tương Ứng Với Rubric
+
+### Trạng thái kiểm chứng ngày 07/10/2026
+
+Bước 2 và Bước 3 đều đã có đủ bốn jobs xanh; quality gate đã chặn model F1=0 và bỏ qua Release. Reports thật và link runs nằm trong [ket-qua/](ket-qua/README.md). API public đã trả healthz=ok và nhãn dự đoán hợp lệ. Báo cáo đã điền metrics thật.
+
+Chưa đủ ảnh: hiện chỉ có 01-mlflow-ui.png. Cần chụp 02, 03, 04 và 05 theo hướng dẫn. Không dùng JSON thay thế ảnh rubric; chưa đánh dấu hoàn tất hồ sơ hoặc đã nộp vlearn.dev. Bản Markdown báo cáo đã rút gọn, cần kiểm tra bố cục khi in để đáp ứng một trang A4.
 
 | Ảnh | Chứng minh hạng mục nào trong rubric | Điểm |
 |---|---|---|

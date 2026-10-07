@@ -1,0 +1,5 @@
+GET http://18.142.249.146:8080/healthz
+{"status":"ok"}
+POST http://18.142.249.146:8080/score
+Body: {"features":[28,2,14,2,11,0,1,0,0,45]}
+{"prediction":1,"label":"thu_nhap_cao"}

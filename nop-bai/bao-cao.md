@@ -1,56 +1,37 @@
-# Báo Cáo Lab Day 21 - CI/CD cho AI Systems
+# Báo cáo Day 21 — CI/CD cho AI Systems
 
-| | |
-|---|---|
-| Họ và tên | Nguyễn Trường Bảo |
-| MSSV | 2A202602540 |
-| Lớp / Khóa | K4 |
-| Repo GitHub | https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems |
-| Ngày nộp | Chưa nộp |
+**Nguyễn Trường Bảo — MSSV 2A202602540 — K4**
+Ngày thực hiện: 07/10/2026
+[Repo GitHub](https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems)
 
-## 1. Bộ Siêu Tham Số Đã Chọn và Lý Do
+### 1. Thực nghiệm và lựa chọn tham số
 
-| Lần chạy | n_estimators | learning_rate | max_depth | f1_score | accuracy |
-|---|---|---|---|---|---|
-| 1 | 100 | 0.1 | 3 | 0.7109 | 0.8780 |
-| 2 | 50 | 0.05 | 2 | 0.6051 | 0.8460 |
-| 3 | 200 | 0.1 | 5 | 0.7149 | 0.8740 |
+| n_estimators | learning_rate | max_depth | F1 | Accuracy |
+|---|---|---|---|---|
+| 100 | 0.1 | 3 | 0.7109 | 0.878 |
+| 50 | 0.05 | 2 | 0.6051 | 0.846 |
+| 200 | 0.1 | 5 | 0.7149 | 0.874 |
 
-**Bộ đã chọn:** `n_estimators=200`, `learning_rate=0.1`, `max_depth=5`.
+Chọn 200 cây, learning_rate=0.1, max_depth=5 vì F1 cao nhất và vượt ngưỡng 0.65. Chênh lệch F1 với cấu hình 100 cây chỉ khoảng 0.004 trên holdout 500 mẫu, nên chưa chứng minh ưu thế trên mọi dữ liệu. Các thí nghiệm được ghi trong MLflow adult-income.
 
-Lần 3 có F1 cao nhất (0,7149), vượt ngưỡng 0,65. Lần 1 có accuracy cao hơn
-(0,8780 so với 0,8740), nhưng F1 thấp hơn (0,7109). Vì mục tiêu là nhận diện
-lớp thu nhập cao, tôi chọn theo F1. Lợi thế chỉ khoảng 0,004 trên holdout
-500 mẫu nên chưa chứng minh sự vượt trội trên mọi dữ liệu. Cấu hình 50 cây,
-learning_rate 0,05 cho F1 thấp nhất: giảm learning_rate cần thêm vòng boosting
-để mô hình học đủ. Các lần chạy được lưu trong experiment `adult-income` của MLflow.
+### 2. Vì sao dùng F1
 
-## 2. Vì Sao Ngưỡng Chất Lượng Đặt Trên F1 Chứ Không Phải Accuracy
+Lớp thu nhập cao chiếm khoảng 24.8%; luôn dự đoán thu nhập thấp vẫn đạt accuracy khoảng 75.2% nhưng F1 lớp dương bằng 0. F1 kết hợp precision và recall để đánh giá nhận diện lớp thu nhập cao. Pipeline dùng F1 riêng cho target=1, không dùng weighted-F1 hay macro-F1 thay thế. Accuracy được ghi để đối chiếu.
 
-Lớp thu nhập trên 50K chiếm khoảng 24,8%. Mô hình luôn dự đoán thu nhập thấp
-vẫn đạt accuracy khoảng 75,2%, nhưng F1 của lớp dương bằng 0 vì bỏ sót toàn
-bộ người thu nhập cao. F1 kết hợp precision và recall, phản ánh khả năng
-nhận diện lớp cần quan tâm. Pipeline dùng `f1_score(y_eval, preds)` cho
-`target=1`, yêu cầu F1 từ 0,65 trở lên. Weighted-F1 chịu ảnh hưởng tỉ lệ lớp;
-macro-F1 trung bình hai lớp. Cả hai đều khác F1 riêng của lớp dương nên không
-được dùng thay chỉ số đã chọn. Accuracy vẫn được log để đối chiếu.
+### 3. Triển khai và kết quả thực tế
 
-## 3. Khó Khăn Gặp Phải và Cách Giải Quyết
+| Lần chạy Actions | Mẫu train | F1 | Accuracy |
+|---|---|---|---|
+| [Bước 2](https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37634963032) | 22,361 | 0.7149 | 0.874 |
+| [Bước 3](https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37635481166) | 44,722 | 0.7354 | 0.882 |
 
-| Khó khăn | Nguyên nhân | Cách giải quyết |
-|---|---|---|
-| MLflow không import/chạy SQLite | Setuptools và SQLAlchemy mới bỏ API mà MLflow 2.13 cần | Cố định Setuptools 80.9.0, SQLAlchemy 2.0.30; 12 kiểm thử đã qua. |
-| Dependency DVC không build trên Windows | Đường dẫn thư mục tạm quá dài | Dùng thư mục Temp ngắn; cố định bộ SDK S3 tương thích. |
-| Khung workflow ghi đè model trước quality gate | Upload nằm trong job Train | Giữ model ở GitHub artifact; chỉ publish trong Release sau khi gate qua. |
+Giữ nguyên holdout 500 mẫu và siêu tham số. Thêm dữ liệu giúp F1 tăng 0.0205, accuracy tăng 0.008 trên holdout này; không đảm bảo cải thiện trên mọi tập dữ liệu. Commit Bước 3 chỉ đổi con trỏ DVC train_batch1, kích hoạt Actions bằng push. Reports thật được lưu tại ket-qua/.
 
-## 4. So Sánh Bước 2 và Bước 3
+[Kiểm chứng quality gate](https://github.com/zewolkt3939/K4-L3-DAY21-NguyenTruongBao-2A202602540-CI-CD-for-AI-Systems/actions/runs/37634935302): model 1 cây, learning_rate=0.01, max_depth=1 có F1=0, accuracy=0.752; Quality Gate thất bại và Release skipped. Bộ tham số tốt đã được khôi phục.
 
-| | f1_score | accuracy |
-|---|---|---|
-| Bước 2 (chỉ train_batch1) | Chờ Actions | Chờ Actions |
-| Bước 3 (thêm train_batch2) | Chờ Actions | Chờ Actions |
+### 4. Khó khăn và cách giải quyết
 
-Chưa triển khai AWS nên chưa có kết quả từ hai lần GitHub Actions để điền
-bảng này. Sau khi tạo S3, EC2 và Secrets, lấy số liệu thật từ artifact
-`report` của từng lần chạy. Giữ nguyên holdout khi so sánh; thêm dữ liệu
-cùng phân phối không đảm bảo F1 sẽ tăng.
+- MLflow 2.13 gặp xung đột dependencies: pin Setuptools/SQLAlchemy; 12 tests qua.
+- Secrets đặt trong environment S3lab nhưng jobs chưa khai báo environment: thêm environment: S3lab cho Train và Release.
+- EC2 chưa gắn role đọc S3: gắn income-api-read-model; API tải model bằng instance credentials.
+- API public timeout do thiếu rule 8080: mở TCP 8080 chỉ từ IP public máy kiểm tra /32. Healthz và score qua IP EC2 đã trả kết quả hợp lệ; bằng chứng văn bản ở ket-qua/api-public.txt.
