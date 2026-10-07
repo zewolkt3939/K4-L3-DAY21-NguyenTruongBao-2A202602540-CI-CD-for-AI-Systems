@@ -23,10 +23,10 @@ nop-bai/
 Đánh dấu `[x]` khi hoàn thành từng mục:
 
 - [x] Repo GitHub ở chế độ **public** và chứa toàn bộ code, cấu hình đã hoàn thiện.
-- [ ] Đủ 5 ảnh trong `anh-chup-man-hinh/`, đúng tên file, đúng thứ tự (xem
+- [x] Đủ 5 ảnh trong `anh-chup-man-hinh/`, đúng tên file, đúng thứ tự (xem
       [yêu cầu chi tiết](anh-chup-man-hinh/README.md)).
 - [x] `bao-cao.md` đã điền đủ nội dung bắt buộc; bản `bao-cao.pdf` đã kiểm tra đúng 1 trang A4.
-- [x] Đã `git push` hồ sơ hiện có trong `nop-bai/` lên GitHub; cần push lại nếu thay ảnh 01.
+- [x] Đã `git push` hồ sơ hiện có trong `nop-bai/` lên GitHub.
 - [ ] Dán URL repo GitHub vào bài nộp trên **https://vlearn.dev**.
 - [ ] Mở lại URL vừa nộp ở chế độ ẩn danh để chắc chắn repo public và người chấm xem được.
 
