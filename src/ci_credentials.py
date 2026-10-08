@@ -3,8 +3,29 @@ import json
 import os
 
 
+def _load_credentials():
+    raw = os.getenv("STORAGE_CREDENTIALS", "").strip()
+    if raw:
+        try:
+            credentials = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            raise ValueError("STORAGE_CREDENTIALS must be valid JSON.") from exc
+    else:
+        credentials = {
+            "aws_access_key_id": os.getenv("AWS_ACCESS_KEY_ID", ""),
+            "aws_secret_access_key": os.getenv("AWS_SECRET_ACCESS_KEY", ""),
+            "aws_session_token": os.getenv("AWS_SESSION_TOKEN", ""),
+        }
+    missing = [key for key in ("aws_access_key_id", "aws_secret_access_key")
+               if not credentials.get(key)]
+    if missing:
+        raise ValueError("Missing AWS credentials. Set STORAGE_CREDENTIALS or "
+                         "AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY.")
+    return credentials
+
+
 def main():
-    credentials = json.loads(os.environ["STORAGE_CREDENTIALS"])
+    credentials = _load_credentials()
     values = {
         "AWS_ACCESS_KEY_ID": credentials["aws_access_key_id"],
         "AWS_SECRET_ACCESS_KEY": credentials["aws_secret_access_key"],
